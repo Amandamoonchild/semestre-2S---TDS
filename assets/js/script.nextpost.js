@@ -1,4 +1,5 @@
 const posts = [];
+let postIndex = -1;
 
 function savePost() {
     const title = document.getElementById("title").value;
@@ -8,13 +9,26 @@ function savePost() {
     const date = document.getElementById("date").value;
 
     if (title && categories && resume && publisher && date) {
-        storePost(title, categories, resume, publisher, date);
+        if (postIndex == -1) {
+            storePost(title, categories, resume, publisher, date);
+            cleanFields();
+            showPosts();
+        }
+        else {
+            posts[postIndex] = {
+                title,
+                categories,
+                resume,
+                publisher,
+                date
+            };
+        }
         cleanFields();
-        showPosts() ;
+        showPosts();
+        postIndex = -1;
     } else {
         alert("preencha todos os campos!");
     }
-
 
 }
 
@@ -32,13 +46,14 @@ function storePost(title, categories, resume, publisher, date) {
         categories,
         resume,
         publisher,
-        date,
+        date
     };
     posts.push(post)
     console.log(post)
 }
 
 function showPosts() {
+    document.getElementById("list").classList.remove("hidden");
     let showContent = "";
 
     posts.forEach((post, index) => {
@@ -51,10 +66,32 @@ function showPosts() {
            <p><strong> Data: </strong> ${post.date}</p>
 
            <button onclick="editPost(${index})">Editar</button>
-           <button onclick="deletePost(${index})">Excluir</button>
+           <button onclick="removePost(${index})">Excluir</button>
         </div>
         `;
     });
 
     document.getElementById("list").innerHTML = showContent;
+}
+
+function editPost(index) {
+    console.log("hello world")
+    const post = posts[index];
+
+    document.getElementById("title").value = post.title;
+    document.getElementById("categories").value = post.categories;
+    document.getElementById("resume").value = post.resume;
+    document.getElementById("publisher").value = post.publisher;
+    document.getElementById("date").value = post.date;
+
+    postIndex = index;
+}
+
+function removePost(index){
+    posts.splice(index, 1);
+    showPosts();
+
+    if (posts.length == 0){
+        document.getElementById("list").classList.add("hidden");
+    }
 }
