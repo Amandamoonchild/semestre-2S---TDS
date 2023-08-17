@@ -18,6 +18,31 @@
             <input type="text" required id="categoryName">
             <button class="btn" onclick="createCategory()">Criar categoria</button>
         </div>
+        <div class="form-container">
+            <h2>✍ Criar produto</h2>
+            <div id="productInfos">
+                <div class="productInputs">
+                    <label for="productName">📦 Nome do produto:</label>
+                    <input type="text" id="productName" required>
+                </div>
+                <div class="productInputs">
+                    <label for="productPrice">💲 Preço:</label>
+                    <input type="number" id="productPrice" required>
+                </div>
+            </div>
+
+            <label for="">Categoria:</label>
+            <select id="productCategory" required>
+                <!--Vai ser alimentado dinamicamente com o js-->
+            </select>
+            <button class="btn">🎉 Criar produto!</button>
+        </div>
+        <!--Lista de categoria de produtos-->
+        <div class="list-container">
+            <h2>📋 Categorias & Produtos</h2>
+            <ul id="categoriesList"></ul>
+        </div>
+    </div>
     </div>
 </body>
 
