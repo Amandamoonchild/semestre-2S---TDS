@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../assets/js/tasklist.js"></script>
+    <link rel="stylesheet" href="../assets/css/tasklist.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Task list</title>
+</head>
+
+<body>
+    <main>
+        <div id="container">
+            <p>PREENCHA TODOS OS CAMPOS!</p>
+            <div id="box">
+                <input id="writeBox" placeholder="Write your task!">
+                <button onclick="createTask()" type="button" id="button"><i class="fa-solid fa-plus"></i></i></button>
+            </div>
+            <div id="publish" class="hidden">
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
